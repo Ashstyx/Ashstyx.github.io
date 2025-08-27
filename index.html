@@ -1,0 +1,209 @@
+<!-- Squarespace-friendly, embeddable portfolio section (no <html>, <head>, or <body> tags). Paste this into a Squarespace Code Block. -->
+
+<section class="ash-portfolio" id="ash-portfolio">
+  <style>
+    /* ===== SCOPE EVERYTHING TO .ash-portfolio ===== */
+    .ash-portfolio { --bg:#0e0f11; --panel:#15171a; --text:#E2E5DE; --muted:#b7c1cc; --accent:#e65c3a; --accent-2:#ffb88f; --card:#1b1e22; --ring:rgba(230,92,58,.35); --shadow:0 10px 30px rgba(0,0,0,.35); }
+    @media (prefers-color-scheme: light){ .ash-portfolio { --bg:#fbfbfd; --panel:#ffffff; --text:#0f1115; --muted:#4d5662; --card:#ffffff; --shadow:0 10px 30px rgba(0,0,0,.08);} }
+
+    .ash-portfolio { color:var(--text); background:var(--bg); margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); width: 100vw; border-radius: 0; overflow: hidden; font-size:17px; line-height:1.7; }
+    @media (min-width: 1000px){ .ash-portfolio{ font-size:18.5px; } }
+    .ash-portfolio * { box-sizing:border-box; }
+    .ash-portfolio img{ max-width:100%; display:block; }
+    .ash-portfolio a{ color:inherit; text-decoration:none; }
+    .ash-portfolio .container{ width:min(1400px,96%); margin-inline:auto; }
+    .ash-portfolio .pill{ display:inline-block; padding:.4rem .8rem; border:1px solid var(--ring); border-radius:999px; background:linear-gradient(180deg,rgba(230,92,58,.14),transparent); }
+    .ash-portfolio .btn{ display:inline-flex; gap:.5rem; align-items:center; padding:.85rem 1.1rem; border-radius:14px; border:1px solid var(--ring); background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#0f1115; font-weight:700; box-shadow:var(--shadow); }
+    .ash-portfolio .btn.secondary{ background:transparent; color:var(--text); }
+    .ash-portfolio .section{ padding:96px 0; }
+    .ash-portfolio .muted{ color:var(--muted); }
+    .ash-portfolio .grid{ display:grid; gap:32px; }
+    .ash-portfolio .card{ background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:18px; padding:28px; box-shadow:var(--shadow); }
+
+    /* Typography spacing */
+    .ash-portfolio p{margin:0 0 1rem;}
+    .ash-portfolio ul{margin:0 0 1rem 1.2rem;}
+    .ash-portfolio li{margin:.4rem 0;}
+    .ash-portfolio h1, .ash-portfolio h2, .ash-portfolio h3{margin:0 0 .8rem;}
+    .ash-portfolio h2{font-size:clamp(28px,3.6vw,44px);} 
+    .ash-portfolio h3{font-size:clamp(18px,2.2vw,24px);} 
+
+    /* ===== LOCAL NAV ===== */
+    .ash-portfolio .subnav{ background:rgba(10,11,13,.6); border-bottom:1px solid rgba(255,255,255,.06); backdrop-filter:saturate(160%) blur(8px); }
+    .ash-portfolio .subnav-inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0; }
+    .ash-portfolio .brand{ display:flex; align-items:center; gap:.75rem; font-weight:800; }
+    .ash-portfolio .brand .logo{ width:36px; height:36px; display:grid; place-items:center; border-radius:12px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#0f1115; font-weight:900; }
+    .ash-portfolio .nav-links{ display:flex; gap:1rem; flex-wrap:wrap; }
+    .ash-portfolio .nav-links a{ padding:.6rem .8rem; border-radius:10px; }
+    .ash-portfolio .nav-links a:hover{ background:rgba(255,255,255,.06); }
+
+    /* ===== HERO ===== */
+    .ash-portfolio .hero{ display:grid; gap:36px; grid-template-columns:1.3fr .9fr; align-items:center; padding:32px 0; }
+    .ash-portfolio .hero h1{ font-size:clamp(36px,6vw,64px); line-height:1.08; margin:0; }
+    .ash-portfolio .highlight{ background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .ash-portfolio .stats{ display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; }
+    .ash-portfolio .badge{ padding:.55rem .85rem; border-radius:999px; background:rgba(230,92,58,.12); border:1px solid var(--ring); }
+    .ash-portfolio .profile{ width:min(440px,95%); aspect-ratio:1; overflow:hidden; border-radius:26px; border:2px solid var(--ring); background:linear-gradient(135deg,rgba(230,92,58,.12),transparent); margin-inline:auto; }
+    @media (max-width: 1200px){ .ash-portfolio .hero{grid-template-columns:1fr;} }
+
+    /* ===== SKILLS ===== */
+    .ash-portfolio .skills-grid{ grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+
+    /* ===== EXPERIENCE ===== */
+    .ash-portfolio .timeline{ position:relative; }
+    .ash-portfolio .timeline::before{ content:""; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(var(--ring),transparent); }
+    .ash-portfolio .event{ position:relative; padding-left:40px; }
+    .ash-portfolio .event::before{ content:""; position:absolute; left:6px; top:12px; width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent-2)); box-shadow:0 0 0 4px rgba(230,92,58,.18); }
+    .ash-portfolio .event h4{ margin:.2rem 0; }
+    .ash-portfolio .event .meta{ font-weight:600; }
+
+    /* ===== PORTFOLIO ===== */
+    .ash-portfolio .gallery{ grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; }
+    .ash-portfolio .gallery .item{ overflow:hidden; border-radius:16px; border:1px solid rgba(255,255,255,.08); }
+    .ash-portfolio .gallery .item img{ transition:transform .4s ease; }
+    .ash-portfolio .gallery .item:hover img{ transform:scale(1.04); }
+
+    /* ===== CONTACT ===== */
+    .ash-portfolio .contact-grid{ grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+    .ash-portfolio .contact a.link{ display:inline-flex; align-items:center; gap:.6rem; }
+
+    .ash-portfolio footer{ padding:24px 0; color:var(--muted); }
+  </style>
+
+  <!-- Sub-nav -->
+  <div class="subnav">
+    <div class="container subnav-inner">
+      <a class="brand" href="#ash-portfolio">
+        <span class="logo" aria-hidden="true">AS</span>
+        <span>Ashley Sargent</span>
+      </a>
+      <div class="nav-links">
+        <a href="#ash-about">About</a>
+        <a href="#ash-skills">Skills</a>
+        <a href="#ash-exp">Experience</a>
+        <a href="#ash-work">Portfolio</a>
+        <a href="#ash-contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="container hero section" id="ash-hero">
+    <div>
+      <span class="pill">Hospitality • Kitchens • Bars • Customer Service</span>
+      <h1>Hi, I’m <span class="highlight">Ashley Sargent</span> — a chef & hospitality professional who loves delivering great food and brilliant guest experiences.</h1>
+      <p class="muted">10+ years across kitchens, bars and customer-facing roles. Experienced in menu design, event catering, team leadership, and running high‑volume service.</p>
+      <div class="stats">
+        <span class="badge">5★ Just Eat</span>
+        <span class="badge">Top food delivery in area</span>
+        <span class="badge">Food Hygiene L2</span>
+        <span class="badge">BIIAB Licensed</span>
+      </div>
+      <div class="cta" style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn" href="https://gopher-wolf-2g9m.squarespace.com/s/CURRICULUM-VITAE.odt" download>Download CV</a>
+        <a class="btn secondary" href="#ash-contact">Contact me</a>
+      </div>
+    </div>
+   <!-- <aside>
+      <div class="profile" aria-label="Portrait placeholder">
+        <img src="https://images.squarespace-cdn.com/content/v1/6899cfc8ce8e9f094a9ae2da/0d1f9d03-b1e2-4531-8ec1-ca3392240f4c/dgffdgfd.jpg?format=750w" alt="Smash burger sharing platter" />
+      </div>
+    </aside> -->
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="ash-about">
+    <div class="container grid" style="grid-template-columns:1.1fr .9fr; align-items:center">
+      <div>
+        <h2>About me</h2>
+        <p>I’m a passionate and adaptable hospitality professional who thrives in fast‑paced environments. I’ve managed busy kitchens, delivered 5‑star customer service, and built a local following with great food that keeps people coming back.</p>
+        <p>From gourmet smash burgers at <strong>Tayberry Foods</strong> to launching my own Mexican‑fusion takeaway <strong>Tortillas Ltd</strong>, I care about quality, consistency and teamwork. I love building menus, leading service, and creating brilliant guest experiences.</p>
+      </div>
+      <div class="card">
+        <p class="muted">Quick facts</p>
+        <ul>
+          <li>10+ years across kitchens, bars & customer service</li>
+          <li>5★ rated with 50+ reviews on Just Eat</li>
+          <li>Food Hygiene Certificate — Level 2</li>
+          <li>BIIAB Licensed to Sell Alcohol</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="ash-skills">
+    <div class="container">
+      <h2>What I’m good at</h2>
+      <div class="grid skills-grid">
+        <div class="card skill"><h3>Kitchen management & cooking</h3><p class="muted">Running prep, service and quality in high‑volume environments.</p><ul><li>Gourmet burgers, Mexican fusion, hot food delivery</li><li>Stock control and scheduling</li><li>Consistent plating & hygiene standards</li></ul></div>
+        <div class="card skill"><h3>Bar service & stock handling</h3><p class="muted">Fast, friendly service with clean lines and accurate tills.</p><ul><li>Beer line maintenance & bar readiness</li><li>Restocking & cash handling</li></ul></div>
+        <div class="card skill"><h3>Customer service & communication</h3><p class="muted">Top‑rated reviews by focusing on guests and the details.</p><ul><li>Calm under pressure, professional with intoxicated patrons</li><li>Clear communication across FOH & BOH</li></ul></div>
+        <div class="card skill"><h3>Menu design & event catering</h3><p class="muted">Creating crowd‑pleasing menus and serving at scale.</p><ul><li>Festival & live‑music catering</li><li>Prep systems for high‑volume service</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="ash-exp">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="timeline grid" style="gap:20px">
+        <article class="card event"><p class="meta">August 2025 – Present · Sous Chef • Genuine Dining</p><h4>Sous Chef</h4><ul><li>Manage kitchen ops, stock checks & staff scheduling</li><li>Cooking food from around the world</li><li>Maintaining a fun and efficient kitchen environment</li></ul></article>
+        <article class="card event"><p class="meta">May 2024 – August 2025 · Team Lead • Tayberry Foods</p><h4>Chef / Team Lead</h4><ul><li>Manage kitchen ops, stock checks & staff scheduling</li><li>Specialist in gourmet smash burgers & hot food delivery</li><li>5★ rated on Just Eat with 50+ reviews; “best food in the area”</li></ul></article>
+        <article class="card event"><p class="meta">Jun 2023 – Mar 2024 · Founder • Tortillas Ltd</p><h4>Founder & Head Chef</h4><ul><li>Launched and operated a top‑performing takeaway business</li><li>Maintained a 5★ rating; ranked 2nd on Just Eat in the area</li><li>Managed a team of 4 and catered festivals & live‑music events</li></ul></article>
+        <article class="card event"><p class="meta">Jul 2016 – Jul 2023 • 81 Beach Street</p><h4>Kitchen Porter</h4><ul><li>Supported chefs with prep, plating and kitchen hygiene</li><li>Assisted during peak service; dishwashing and cleaning</li></ul></article>
+        <article class="card event"><p class="meta">Aug 2014 – Mar 2015 • Three Compasses Restaurant</p><h4>Kitchen Porter / Restaurant Assistant</h4><ul><li>Kitchen cleaning, table setup & booking management</li><li>Maintained beer lines, restocked bar & ensured readiness</li></ul></article>
+        <article class="card event"><p class="meta">Nov 2008 – Apr 2013 • Sainsbury’s</p><h4>Customer Service Assistant / Store Trainer</h4><ul><li>Customer support across tills and shop floor</li><li>Trained new staff in processes & customer care</li><li>Managed deliveries and stock presentation</li></ul></article>
+        <article class="card event"><p class="meta">May 2005 – Nov 2009 • Rivals Bar and Club</p><h4>Bar Staff</h4><ul><li>High‑volume nightlife venue with professional bar service</li><li>Handled intoxicated patrons and maintained cleanliness</li></ul></article>
+        <article class="card event"><p class="meta">Nov 2004 – Mar 2005 • McDonald’s</p><h4>Customer Service Team Member</h4><ul><li>Fast‑paced service at tills and in the kitchen</li><li>Supported team with cooking, cleaning & stock</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="section" id="ash-work">
+    <div class="container">
+      <h2>Portfolio</h2>
+      <p class="muted">A few examples of dishes, setups and events.</p>
+      <div class="grid gallery">
+        <figure class="item"><img src="https://images.squarespace-cdn.com/content/v1/6899cfc8ce8e9f094a9ae2da/5a7dd500-6648-453a-80a2-8df1b38167c8/IMG_20250614_135721.jpg?format=750w" alt="Gourmet burger"/><figcaption class="muted" style="padding:10px">Gourmet smash burger — Tayberry Foods</figcaption></figure>
+        <figure class="item"><img src="https://images.squarespace-cdn.com/content/v1/6899cfc8ce8e9f094a9ae2da/08c310fd-7b3d-47fd-bcdc-0d46bb158e52/376006511_180963891684737_175129591800772764_n.jpg?format=750w" alt="Street food tacos"/><figcaption class="muted" style="padding:10px">Mexican‑fusion quesadillas — Tortillas Ltd</figcaption></figure>
+        <figure class="item"><img src="https://images.squarespace-cdn.com/content/v1/6899cfc8ce8e9f094a9ae2da/3dda35cd-f631-4aec-8946-a13e331d0629/IMG_4695.JPG?format=750w" alt="Festival catering setup"/><figcaption class="muted" style="padding:10px">Live‑music festival catering - Tortillas Ltd</figcaption></figure>
+        <figure class="item"><img src="https://images.squarespace-cdn.com/content/v1/6899cfc8ce8e9f094a9ae2da/30fe2be5-d858-41f0-818d-50f237720e10/drinks.png?format=750w" alt="Bar counter with taps"/><figcaption class="muted" style="padding:10px">Bar service & stock handling</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="ash-contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="grid contact-grid">
+        <div class="card">
+          <p class="muted">Phone</p>
+          <p><a class="link" href="tel:+447759174109">+44 7759 174109</a></p>
+        </div>
+        <div class="card">
+          <p class="muted">Email</p>
+          <p><a class="link" href="mailto:ash-sargent@hotmail.co.uk">ash-sargent@hotmail.co.uk</a></p>
+        </div>
+        </div>
+      <footer>
+        <div class="container">
+         <center> <p>© <span class="ash-year"></span> Ashley Sargent. All rights reserved.</p></center>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <script>
+    // Scope JS to this section only
+    (function(){
+      const root = document.getElementById('ash-portfolio');
+      if(!root) return;
+      const yearEls = root.querySelectorAll('.ash-year');
+      yearEls.forEach(el=> el.textContent = new Date().getFullYear());
+    })();
+  </script>
+</section>
