@@ -67,7 +67,82 @@
     .ash-portfolio .contact-grid{ grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
     .ash-portfolio .contact a.link{ display:inline-flex; align-items:center; gap:.6rem; }
 
-    .ash-portfolio footer{ padding:24px 0; color:var(--muted); }
+/* Reviews: make boxes wider and 4 per row */
+.ash-portfolio .testimonials-grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(4, minmax(260px, 1fr)); /* wider cells */
+  justify-items: center;
+}
+
+/* Remove old width caps */
+.ash-portfolio .review-item { 
+  width: 100%;
+  max-width: none !important;         /* override earlier max-widths */
+  text-align: center;
+}
+
+/* Let images fill their card */
+.ash-portfolio .review-item img {
+  width: 100%;
+  max-width: none !important;         /* override earlier max-widths */
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+
+
+/* ===== Carousel styles (scoped) ===== */
+.ash-carousel { position: relative; overflow: hidden; }
+.ash-carousel .track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.6s ease;
+}
+.ash-carousel .slide {
+  flex: 0 0 auto;
+  width: min(220px, 85vw);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.ash-carousel .slide img { width: 100%; display: block; }
+
+.ash-carousel .nav {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px;
+  border-radius: 50%; border: none;
+  background: rgba(0,0,0,.5); color: white;
+  cursor: pointer;
+  z-index: 5;
+}
+.ash-carousel .prev { left: 10px; }
+.ash-carousel .next { right: 10px; }
+
+.ash-carousel .slide {
+  flex: 0 0 auto;
+  width: min(200px, 85vw);
+  height: 200px;       /* fixed height for all slides */
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ash-carousel .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* fill the box, crop edges neatly */
+  display: block;
+}
+
+/* kill white seam/gap above the embed */
+.ash-portfolio { position: relative; margin-top: -1px; }
+.ash-portfolio .subnav { margin-top: 0; }
+
+
+
+
   </style>
 
   <!-- Sub-nav -->
@@ -161,19 +236,66 @@
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
-  <section class="section" id="ash-work">
-    <div class="container">
-      <h2>Portfolio</h2>
-      <p class="muted">A few examples of dishes, setups and events.</p>
-      <div class="grid gallery">
-        <figure class="item"><img src="https://images.squarespace-cdn.com/content/v1/6899cfc8ce8e9f094a9ae2da/5a7dd500-6648-453a-80a2-8df1b38167c8/IMG_20250614_135721.jpg?format=750w" alt="Gourmet burger"/><figcaption class="muted" style="padding:10px">Gourmet smash burger — Tayberry Foods</figcaption></figure>
-        <figure class="item"><img src="https://images.squarespace-cdn.com/content/v1/6899cfc8ce8e9f094a9ae2da/08c310fd-7b3d-47fd-bcdc-0d46bb158e52/376006511_180963891684737_175129591800772764_n.jpg?format=750w" alt="Street food tacos"/><figcaption class="muted" style="padding:10px">Mexican‑fusion quesadillas — Tortillas Ltd</figcaption></figure>
-        <figure class="item"><img src="https://images.squarespace-cdn.com/content/v1/6899cfc8ce8e9f094a9ae2da/3dda35cd-f631-4aec-8946-a13e331d0629/IMG_4695.JPG?format=750w" alt="Festival catering setup"/><figcaption class="muted" style="padding:10px">Live‑music festival catering - Tortillas Ltd</figcaption></figure>
-        <figure class="item"><img src="https://images.squarespace-cdn.com/content/v1/6899cfc8ce8e9f094a9ae2da/30fe2be5-d858-41f0-818d-50f237720e10/drinks.png?format=750w" alt="Bar counter with taps"/><figcaption class="muted" style="padding:10px">Bar service & stock handling</figcaption></figure>
+
+<!-- PORTFOLIO (Carousel) -->
+<section class="section" id="ash-work">
+  <div class="container">
+    <h2>Portfolio</h2>
+
+    <div class="ash-carousel" aria-label="Food & events gallery">
+      <button class="nav prev" aria-label="Previous">‹</button>
+
+      <div class="track">
+
+        <div class="slide"><img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/0c62c6c7-7b6c-441f-9998-84b616336142/dgffdgfd.jpg?format=750w" alt="Photo 4"></div>
+        <div class="slide"><img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/25822d14-ac8f-4dd9-a585-3d53d53eb265/131556632_327731964869781_473346404956022207_n_17896641307692729.jpg?format=750w" alt="Photo 5"></div>
+        <div class="slide"><img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/7ddfeb86-81fe-42d5-b002-c6c69535e4bd/62152295_1164148397116670_7845300042370703401_n_17894313916338382.jpg?format=750w" alt="Photo 6"></div>
+		<div class="slide"><img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/e4aa3832-f0c0-48f9-871a-85e4dc761bd3/214358622_520335012618312_4039937500832411103_n_17901786058982523.jpg?format=750w" alt="Photo 6"></div>
+		<div class="slide"><img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/35d37663-d9f9-44f3-85a0-08dcbd83c684/70579465_529273631161521_8141471691766218099_n_17890023964407403.jpg?format=750w" alt="Photo 6"></div>
+		<div class="slide"><img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/4910ca74-efdc-46bc-89c4-66665ec80a0d/107419186_119137676255961_2258695131580893825_n_17850231980161823.jpg?format=750w" alt="Photo 6"></div>
+		<div class="slide"><img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/d787fd1c-4d88-42cb-9e0a-ba835e88bc84/back.png?format=750w" alt="Photo 6"></div>
+		<div class="slide"><img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/26f5b504-5a13-4c24-8f60-48b9fb6a5137/358642397_810023710441200_4279623060707248997_n.jpg?format=750w" alt="Photo 6"></div>
+        <!-- add more .slide blocks here -->
       </div>
+
+      <button class="nav next" aria-label="Next">›</button>
     </div>
-  </section>
+  </div>
+</section>
+
+
+<section class="section" id="reviews">
+  <div class="container">
+    <h2>Reviews</h2>
+    <div class="testimonials-grid">
+      
+      <!-- Review 1 -->
+      <figure class="card review-item">
+        <img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/6b9cd040-f9f6-4a74-b6e8-2a03d9236dff/review+1.png?format=750w" alt="Review 1" />
+        <figcaption class="muted">“Excellent! Really tasty chicken burger meal and generous with the portion size. Ready super quick too! Will order again. Thank you!” — Just Eat reviewer</figcaption>
+      </figure>
+
+      <!-- Review 2 -->
+      <figure class="card review-item">
+        <img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/d152d42e-d636-44fd-8b90-bf277ae02696/review+2.png?format=750w" alt="Review 2" />
+        <figcaption class="muted">“The burgers are amazing. Best burger I have ever had. Everything cooked to perfection. Thank you” — Just Eat reviewer</figcaption>    
+      </figure>
+	  
+	   <!-- Review 3 -->
+      <figure class="card review-item">
+        <img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/b36795e3-2004-4ee0-bfab-5d4ab74cb528/review+3.png?format=750w" alt="Review 2" />
+        <figcaption class="muted">“Best takeaway we’ve had in ages. The smash burgers were amazing and the skin on fries are top notch” — Just Eat reviewer</figcaption>    
+      </figure>
+	  
+	  	   <!-- Review 4 -->
+      <figure class="card review-item">
+        <img src="https://images.squarespace-cdn.com/content/v1/68af293cf1f7f065b22a1e22/8ed99440-4dfc-4bce-a15e-e452e94208d9/review+4.png?format=1000w" alt="Review 2" />
+        <figcaption class="muted">“Amazing food, cooked and boxed with love. Burgers are the best home delivery we've had especially the vegan burger that was the bomb. Will definitely be our regular.” — Just Eat reviewer</figcaption>    
+      </figure>
+    </div>
+  </div>
+</section>
+
 
   <!-- CONTACT -->
   <section class="section contact" id="ash-contact">
@@ -189,13 +311,42 @@
           <p><a class="link" href="mailto:ash-sargent@hotmail.co.uk">ash-sargent@hotmail.co.uk</a></p>
         </div>
         </div>
+
+    </div>
+  </section>
+<!-- HOBBIES -->
+<section class="section" id="ash-hobbies">
+  <div class="container">
+    <h2>Hobbies & Interests</h2>
+    <div class="grid skills-grid">
+      
+      <!-- Music -->
+      <div class="card">
+        <h3>Making Music</h3>
+        <p class="muted">I enjoy producing and sharing my own tracks in my free time.</p>
+        <p>
+          <a class="link" href="https://soundcloud.com/ashstyx" target="_blank">
+            🎵 Listen on SoundCloud
+          </a>
+        </p>
+      </div>
+
+      <!-- Juggling -->
+      <div class="card">
+        <h3>Juggling</h3>
+        <p class="muted">I love juggling as a way to practice focus, coordination, and meditation.</p>
+        <p>🤹‍♂️ Practicing with 3 clubs whilst walking through busy crowds is my favorite challenge.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
       <footer>
         <div class="container">
          <center> <p>© <span class="ash-year"></span> Ashley Sargent. All rights reserved.</p></center>
         </div>
       </footer>
-    </div>
-  </section>
 
   <script>
     // Scope JS to this section only
@@ -206,4 +357,79 @@
       yearEls.forEach(el=> el.textContent = new Date().getFullYear());
     })();
   </script>
+  
+<script>
+(function(){
+  const car = document.querySelector('.ash-carousel');
+  if(!car) return;
+
+  const track = car.querySelector('.track');
+  const origSlides = Array.from(track.children);
+
+  // Duplicate the original slides once (end) for looping
+  origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+
+  const GAP = parseFloat(getComputedStyle(track).gap || 16) || 16;
+  const slidesTotal = origSlides.length; // count of the originals, not including clones
+  let index = 0;
+
+  function slideWidth(){
+    const first = track.querySelector('.slide');
+    return first ? first.getBoundingClientRect().width + GAP : 400;
+  }
+
+  function goTo(i){
+    track.style.transition = 'transform 0.6s ease';
+    track.style.transform = `translateX(${-i * slideWidth()}px)`;
+    index = i;
+  }
+
+  function goNext(){
+    goTo(index + 1);
+  }
+
+  function goPrev(){
+    if(index === 0){
+      // Jump to cloned set at end without animation, then step back one
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${-slidesTotal * slideWidth()}px)`;
+      index = slidesTotal;
+      requestAnimationFrame(() => goTo(index - 1));
+    } else {
+      goTo(index - 1);
+    }
+  }
+
+  // When the animation reaches the cloned area, snap back silently
+  track.addEventListener('transitionend', () => {
+    if(index >= slidesTotal){
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(0px)';
+      index = 0;
+      // Force reflow so next transition works smoothly
+      void track.offsetWidth;
+      track.style.transition = 'transform 0.6s ease';
+    }
+  });
+
+  // Autoplay + pause on hover
+  let timer = setInterval(goNext, 3000);
+  car.addEventListener('mouseenter', () => clearInterval(timer));
+  car.addEventListener('mouseleave', () => (timer = setInterval(goNext, 3000)));
+
+  car.querySelector('.next')?.addEventListener('click', () => { clearInterval(timer); goNext(); });
+  car.querySelector('.prev')?.addEventListener('click', () => { clearInterval(timer); goPrev(); });
+
+  // Keep alignment on resize
+  window.addEventListener('resize', () => {
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${-index * slideWidth()}px)`;
+    void track.offsetWidth;
+    track.style.transition = 'transform 0.6s ease';
+  });
+})();
+</script>
+
+
+
 </section>
