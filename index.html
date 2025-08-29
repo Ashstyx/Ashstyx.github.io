@@ -2,13 +2,34 @@
 
 <section class="ash-portfolio" id="ash-portfolio">
   <style>
-    /* ===== SCOPE EVERYTHING TO .ash-portfolio ===== */
-	.ash-portfolio { margin: 0; padding: 0; }
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
+	.ash-portfolio { margin: 0; padding: 0;   overflow-x: hidden; /* This prevents horizontal scroll */}
+
+  
+    /* ===== SCOPE EVERYTHING TO .ash-portfolio ===== */
     .ash-portfolio { --bg:#0e0f11; --panel:#15171a; --text:#E2E5DE; --muted:#b7c1cc; --accent:#e65c3a; --accent-2:#ffb88f; --card:#1b1e22; --ring:rgba(230,92,58,.35); --shadow:0 10px 30px rgba(0,0,0,.35); }
     @media (prefers-color-scheme: light){ .ash-portfolio { --bg:#fbfbfd; --panel:#ffffff; --text:#0f1115; --muted:#4d5662; --card:#ffffff; --shadow:0 10px 30px rgba(0,0,0,.08);} }
 
-    .ash-portfolio { color:var(--text); background:var(--bg); margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); width: 100vw; border-radius: 0; overflow: hidden; font-size:17px; line-height:1.7; }
+.ash-portfolio {
+  color: var(--text);
+  background: var(--bg);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  overflow-x: hidden;  /* kill horizontal scroll */
+  overflow-y: visible;
+  font-size: 17px;
+  line-height: 1.7;
+  position: relative;
+  margin-top: -1px;    /* hide any 1px seam at top */
+  margin-bottom: -1px; /* hide any 1px seam at bottom */
+}
+
     @media (min-width: 1000px){ .ash-portfolio{ font-size:18.5px; } }
     .ash-portfolio * { box-sizing:border-box; }
     .ash-portfolio img{ max-width:100%; display:block; }
@@ -103,12 +124,7 @@
   gap: 16px;
   transition: transform 0.6s ease;
 }
-.ash-carousel .slide {
-  flex: 0 0 auto;
-  width: min(220px, 85vw);
-  border-radius: 16px;
-  overflow: hidden;
-}
+
 .ash-carousel .slide img { width: 100%; display: block; }
 
 .ash-carousel .nav {
@@ -123,13 +139,7 @@
 .ash-carousel .prev { left: 10px; }
 .ash-carousel .next { right: 10px; }
 
-.ash-carousel .slide {
-  flex: 0 0 auto;
-  width: min(200px, 85vw);
-  height: 200px;       /* fixed height for all slides */
-  border-radius: 16px;
-  overflow: hidden;
-}
+
 
 .ash-carousel .slide img {
   width: 100%;
@@ -435,5 +445,3 @@
 
 
 </section>
-
-
