@@ -33,6 +33,10 @@ html, body {
 }
 
     @media (min-width: 1000px){ .ash-portfolio{ font-size:18.5px; } }
+	.ash-portfolio .pill {
+  margin-top: 50px; /* just a test value to see if it moves */
+}
+
     .ash-portfolio * { box-sizing:border-box; }
     .ash-portfolio img{ max-width:100%; display:block; }
     .ash-portfolio a{ color:inherit; text-decoration:none; }
@@ -72,6 +76,8 @@ html, body {
     .ash-portfolio .nav-links a:hover{ background:rgba(255,255,255,.06); }
 
     /* ===== HERO ===== */
+
+
     .ash-portfolio .hero{ display:grid; gap:36px; grid-template-columns:1.3fr .9fr; align-items:center; padding:32px 0; }
     .ash-portfolio .hero h1{ font-size:clamp(36px,6vw,64px); line-height:1.08; margin:0; }
     .ash-portfolio .highlight{ background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
